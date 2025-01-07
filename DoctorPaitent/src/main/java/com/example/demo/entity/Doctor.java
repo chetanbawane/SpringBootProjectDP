@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -19,7 +20,7 @@ import jakarta.persistence.Table;
 public class Doctor {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int doctor_id;
 	@Column
 	private int experience;
@@ -27,6 +28,7 @@ public class Doctor {
 	private String name ,degree,specialization;
 	
 	@OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
+	@JsonBackReference
 	private List<Patient> paitents;
 
 	public int getDoctor_id() {

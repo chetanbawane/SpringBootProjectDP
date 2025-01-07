@@ -18,4 +18,30 @@ public class DoctorService {
 		
 		return doctorRepos.findAll();
 	}
+	
+	public List<String> getDoctorsByJPQL(){
+		 return doctorRepos.getDoctorsByJPQL();
+	}
+		 
+		 public List<Doctor> getDoctorsByName(){
+			 return doctorRepos.getDoctorsByName("Mohan Choudhari");
+	}
+		 
+		 public List<Doctor> getDoctorsByNative(){
+			 return doctorRepos.getDoctorsByNative();	}
+		 
+		 public Doctor getDoctorbyId(int id){
+			 return doctorRepos.findById(id).orElseThrow(()-> new RuntimeException("doctor not found"));
+		 }
+		 
+		 public List<Doctor> getDoctorReqestParam(String speciliztion){
+			 return doctorRepos.findBySpecialization(speciliztion);
+		 }
+		 
+		 // post RequetbodyUse
+		 
+		 public Doctor saveDoctor(Doctor doctor) {
+			return doctorRepos.save(doctor);
+			 
+		 }
 }
