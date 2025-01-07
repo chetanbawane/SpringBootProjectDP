@@ -13,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Table
@@ -30,6 +31,9 @@ public class Doctor {
 	@OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
 	@JsonBackReference
 	private List<Patient> paitents;
+	
+	@OneToOne(mappedBy = "doctor", cascade = CascadeType.ALL)
+	private DoctorPatientDetails doctorPatientDetails;
 
 	public int getDoctor_id() {
 		return doctor_id;
@@ -77,6 +81,14 @@ public class Doctor {
 
 	public void setPaitents(List<Patient> paitents) {
 		this.paitents = paitents;
+	}
+
+	public DoctorPatientDetails getDoctorPatientDetails() {
+		return doctorPatientDetails;
+	}
+
+	public void setDoctorPatientDetails(DoctorPatientDetails doctorPatientDetails) {
+		this.doctorPatientDetails = doctorPatientDetails;
 	}
 	
 	
